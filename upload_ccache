@@ -8,3 +8,6 @@ rm -rf README.md
 git add -f -A .
 git commit -m "save cache"
 git push https://oauth2:$gitlab_token@gitlab.com/$gitlab_username/$gitlab_reponame.git -f # force push let's goooooo
+
+# clean storage
+rm -rf /tmp/*
