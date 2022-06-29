@@ -6,6 +6,7 @@ env: # Environment variables to pass to all tasks
     gitlab_token: "ENCRYPTED[!82b4a7234f86c63ebdba0c1c72728f26224d7ee1c83935fdb755d84108459c8dcd66df7154d34a0229a0af88bb8d3455!]"
 
 # store information about repo , username and gmail here
+    device_codename: lavender
     gmail: SpiDy2713@gmail.com
     github_username: ImSpiDy
     gitlab_username: ImSpiDy
