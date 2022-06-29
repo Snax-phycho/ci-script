@@ -4,6 +4,7 @@ env: # Environment variables to pass to all tasks
 
 # store our secrets here
     gitlab_token: "ENCRYPTED[!e835d7f95397d2aef1a78043f6b938afa290f2d5fcb079bc050b4ef77c0566d4960b9188fe374ed77ab50f22b9bd6918!]"
+    github_token: "ENCRYPTED[!82ee7e07446c86fe97dda507543443a525fec83e693679c8f84d740764987310d74262013f45a1e5a56cc54e334e8f7c!]"
 
 # store information about repo , username and gmail here
     device_codename: lavender
@@ -11,6 +12,8 @@ env: # Environment variables to pass to all tasks
     github_username: ImSpiDy
     gitlab_username: ImSpiDy
     gitlab_reponame: cirrus-cache
+    github_reponame: cirrus-script
+    rom_name: xyz
 
 task:
     name: aosp
