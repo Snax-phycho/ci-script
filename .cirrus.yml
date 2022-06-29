@@ -6,6 +6,7 @@ env: # Environment variables to pass to all tasks
     gitlab_token: "ENCRYPTED[!e835d7f95397d2aef1a78043f6b938afa290f2d5fcb079bc050b4ef77c0566d4960b9188fe374ed77ab50f22b9bd6918!]"
 
 # store information about git here
+    device_codename: xyz
     gmail: xyz@gmail.com
     gitlab_username: ImSpiDy
     gitlab_reponame: cirrus-cache
