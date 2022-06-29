@@ -3,3 +3,15 @@
 # set your gmail and email
 git config --global user.email "$gmail"
 git config --global user.name "$CIRRUS_REPO_OWNER"
+
+# login in github before uploading
+echo $github_token > mytoken.txt # login in github
+gh auth login --with-token < mytoken.txt
+
+# upload our rom zip
+upload () {
+upload_link=$CIRRUS_REPO_CLONE_URL
+gh release create $rom_name --generate-notes --repo $upload_link
+gh release upload --clobber $rom_name $1 --repo $upload_link
+echo "Link: $upload_link/releases/download/$rom_name/$1"
+}
