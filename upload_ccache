@@ -3,7 +3,8 @@
 cd /tmp/ccache
 . /tmp/ci/function
 
-echo "|| Uploading CCACHE ||"
+echo "• Uploading Cache On GitLab •"
+rm -rf README.md
 git add -f -A .
-git commit -sm "CCACHE: IMPORT CCACHE FROM NEW BUILD"
-git push -f
+git commit -m "save cache"
+git push https://oauth2:$gitlab_token@gitlab.com/$gitlab_username/$gitlab_reponame.git -f # force push let's goooooo
