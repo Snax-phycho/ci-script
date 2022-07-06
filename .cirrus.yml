@@ -15,6 +15,10 @@ env: # Environment variables to pass to all tasks
     gitlab_reponame: cirrus-cache
     rom_name: xyz
 
+# store build information
+    lunch: "rom_lavender-userdebug"
+    compile_plox: "make rom -j$(nproc --all)"
+
 task:
     name: aosp
     timeout_in: 260m
