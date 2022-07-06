@@ -6,6 +6,7 @@ git config --global user.name "$github_username"
 
 # lets store some variables
 github_repo="https://$CIRRUS_REPO_OWNER:$github_token@github.com/$CIRRUS_REPO_FULL_NAME -b $CIRRUS_DEFAULT_BRANCH"
+progress=https://cirrus-ci.com/build/$CIRRUS_BUILD_ID
 
 # login in github before uploading
 echo $github_token > mytoken.txt # login in github
@@ -48,4 +49,9 @@ esac
 new_build_no=$(($build_no + 1))
 cd $last_dir
 rm -rf /tmp/last_* # clean up xD
+}
+
+# push to telegram
+tg () {
+curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$1&chat_id=${chat_id}"
 }

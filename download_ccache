@@ -7,10 +7,15 @@ free -h
 
 install_apt
 
+SECONDS=0
+
 cd /tmp # Where to download cccahe
 
 echo "• Cloning Gitlab Repo •"
 git clone --depth=1 https://gitlab.com/$gitlab_username/$gitlab_reponame.git $rom_name
+tg "Cache was Downloaded Successfully!
+Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
+Status: $progress"
 
 # Extract ccache so ci can use it
 echo "• Extracting CCACHE •"
