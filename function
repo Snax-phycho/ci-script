@@ -31,3 +31,21 @@ chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 apt update && apt install wget pigz gh
 }
+
+# check Build Number
+check_build_no () {
+last_dir=${PWD}
+cd /tmp/ci
+git show -s --format=%s | awk 'NF>1{print $NF}' > /tmp/last_digit.txt # store last digit which is our build number from commit name
+last_value="`cat /tmp/last_digit.txt`" # store build number
+case "$last_value" in
+		 1|2|3|4|5|6|7|8|9)
+		 build_no=$last_value
+		 ;;
+		 *) # at first build we haven't stored any digit in commit name
+		 build_no=0 # so lets use 0 as it is going to become 1 while committing
+esac
+new_build_no=$(($build_no + 1))
+cd $last_dir
+rm -rf /tmp/last_* # clean up xD
+}
