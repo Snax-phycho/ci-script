@@ -18,6 +18,12 @@ git add -f -A .
 git commit -m "$rom_name: save cache"
 git push https://oauth2:$gitlab_token@gitlab.com/$gitlab_username/$gitlab_reponame.git -f # force push let's goooooo
 
+# lets compile again as rom isn't ready yet
+git clone -b $CIRRUS_BRANCH $github_repo $rom_name && cd $rom_name
+git commit -sm "SH*T, HERE WE GO AGAIN | $build_type
+* Empty Commit To Re-Start The Build" --allow-empty
+git push -f
+
 fi
 
 # clean storage

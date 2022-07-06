@@ -4,6 +4,10 @@
 git config --global user.email "$gmail"
 git config --global user.name "$CIRRUS_REPO_OWNER"
 
+# lets store some variables
+github_repo="https://$CIRRUS_REPO_OWNER:$github_token@github.com/$CIRRUS_REPO_FULL_NAME"
+progress=https://cirrus-ci.com/build/$CIRRUS_BUILD_ID
+
 # login in github before uploading
 echo $github_token > mytoken.txt # login in github
 gh auth login --with-token < mytoken.txt
