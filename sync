@@ -17,6 +17,6 @@ git clone --depth=1 https://github.com/$github_username/device_xiaomi_lavender -
 git clone --depth=1 https://github.com/$github_username/vendor_xiaomi_lavender -b x vendor/xiaomi/lavender
 git clone --depth=1 https://github.com/$github_username/kernel_xiaomi_lavender -b x kernel/xiaomi/lavender
 
-tg "Cloned all Sources Successfully!
+check_build_no && tg "Cloned all Sources Successfully!
 Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
-Status: $progress"
+Status: $progress | Build No: $build_no"
