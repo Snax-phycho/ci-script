@@ -11,3 +11,13 @@ cd /tmp # Where to download cccahe
 
 echo "• Cloning Gitlab Repo •"
 git clone --depth=1 https://gitlab.com/$gitlab_username/$gitlab_reponame.git $rom_name
+
+# Extract ccache so ci can use it
+echo "• Extracting CCACHE •"
+if [ -e $rom_name/*.tar.gz ]; then
+mv $rom_name/*.tar.gz /tmp
+time tar xf *.tar.gz
+fi
+
+# Remove unnecessary downloaded file
+rm -rf *.tar.gz
