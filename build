@@ -4,7 +4,7 @@ cd /tmp/rom # Depends on where source got synced
 
 # Normal build steps
 . build/envsetup.sh
-lunch rom_lavender-userdebug
+lunch $lunch
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
@@ -35,7 +35,7 @@ case "$new_build_no" in
 		 build_type="SystemImg"
 		 ;;
 		 *) # Lets Make Full Rom
-		 make rom -j$(nproc --all) &
+		 bash -c "$compile_plox" &
 		 sleep $sleeps
 		 build_type=ROM
 esac
