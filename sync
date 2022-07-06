@@ -20,3 +20,5 @@ git clone --depth=1 https://github.com/$github_username/kernel_xiaomi_lavender -
 check_build_no && tg "Cloned all Sources Successfully!
 Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
 Status: $progress | Build No: $build_no"
+
+echo "$(($SECONDS / 60))" > /tmp/sync_time.txt
