@@ -13,6 +13,7 @@ env: # Environment variables to pass to all tasks
     gitlab_username: ImSpiDy
     gitlab_reponame: cirrus-cache
     github_reponame: cirrus-script
+    rom_name: xyz
 
 task:
     name: aosp
