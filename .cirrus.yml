@@ -15,11 +15,11 @@ env: # Environment variables to pass to all tasks
     gitlab_username: ImSpiDy
     gitlab_reponame: cirrus-cache
     github_reponame: cirrus-script
-    rom_name: xyz
+    rom_name: nusa
 
 # store build information
-    lunch: "rom_lavender-userdebug"
-    compile_plox: "make rom -j$(nproc --all)"
+    lunch: "nad_lavender-userdebug"
+    compile_plox: "make nad -j$(nproc --all)"
 
 task:
     name: aosp
