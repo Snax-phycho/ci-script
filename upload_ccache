@@ -1,15 +1,21 @@
 #!/bin/bash
 
-cd /tmp/ccache
+cd /tmp
 . /tmp/ci/function
 
 # disable ccache upload if rom compilation was successful
 if [ ! -e out/target/product/$device_codename/*$device_codename*2022*zip ]; then
 
+# compress in with pigz in a single zip.
+com ccache 1 # Compression level 1, its enough
+
+mv *.tar.gz /tmp/$rom_name
+
 echo "• Uploading Cache On GitLab •"
+cd /tmp/$rom_name
 rm -rf README.md
 git add -f -A .
-git commit -m "save cache"
+git commit -m "$rom_name: save cache"
 git push https://oauth2:$gitlab_token@gitlab.com/$gitlab_username/$gitlab_reponame.git -f # force push let's goooooo
 
 fi

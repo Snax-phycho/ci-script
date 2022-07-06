@@ -5,9 +5,9 @@ free -h
 
 . /tmp/ci/function
 
-apt install git
+apt install git pigz
 
 cd /tmp # Where to download cccahe
 
 echo "• Cloning Gitlab Repo •"
-git clone --depth=1 https://gitlab.com/$gitlab_username/$gitlab_reponame.git ccache
+git clone --depth=1 https://gitlab.com/$gitlab_username/$gitlab_reponame.git $rom_name
