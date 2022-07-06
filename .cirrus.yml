@@ -17,6 +17,10 @@ env: # Environment variables to pass to all tasks
     github_reponame: cirrus-script
     rom_name: xyz
 
+# store build information
+    lunch: "rom_lavender-userdebug"
+    compile_plox: "make rom -j$(nproc --all)"
+
 task:
     name: aosp
     timeout_in: 260m
