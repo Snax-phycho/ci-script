@@ -14,14 +14,26 @@ ccache -z
 
 # check how much time sync took
 sync_time
-sleeps=$((110 - $sync_time))m
+
+check_build_no
+case "$new_build_no" in
+		 1) # 15 mins to collect and upload cache
+		 sleeps=$((105 - $sync_time))m
+		 ;;
+		 *) # 20 mins to collect and upload cache
+		 sleeps=$((100 - $sync_time))m
+esac
 
 # compile plox
-make rom -j$(nproc --all) &
-sleep $sleeps
-kill %1
-check_build_no && tg "Stop Compiling Rom To Collect Cache
-Status: $progress | Build No: $build_no"
+case "$new_build_no" in
+		 1|2) # save some time to collect cache
+		 make systemimage -j$(nproc --all) &
+		 sleep $sleeps
+		 kill %1
+		 ;;
+		 *) # Lets Make Full Rom
+		 make rom -j$(nproc --all)
+esac
 
 if [ -e out/target/product/$device_codename/*$device_codename*2022*zip ]; then
 
@@ -29,6 +41,11 @@ cd out/target/product/$device_codename
 send_zip=$(upload "*$device_codename*2022*zip")
 tg "Build Succeed!
 $send_zip"
+
+else
+
+tg "Stop Compiling SystemImg To Collect Cache
+Status: $progress | Build No: $build_no"
 
 fi
 
