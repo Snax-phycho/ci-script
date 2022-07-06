@@ -17,11 +17,11 @@ echo "• Uploading Cache On GitLab •"
 cd /tmp/$rom_name
 rm -rf README.md
 git add -f -A .
-git commit -m "$rom_name: save cache"
+git commit -m "$rom_name: save cache | Build No: $build_no"
 git push https://oauth2:$gitlab_token@gitlab.com/$gitlab_username/$gitlab_reponame.git -f # force push let's goooooo
 tg "Cache was Uploaded Successfully!
 Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
-Status: $progress"
+Status: $progress | Build No: $build_no"
 
 # lets compile again as rom isn't ready yet
 git clone $github_repo $rom_name && cd $rom_name
@@ -29,7 +29,7 @@ git commit -sm "SH*T, HERE WE GO AGAIN | $new_build_no
 * Empty Commit To Re-Start The Build" --allow-empty
 git push -f
 tg "Started New Build as Rom isn't Compiled
-Status: https://cirrus-ci.com/"
+Status: https://cirrus-ci.com/ | Build No: $new_build_no"
 
 else
 

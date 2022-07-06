@@ -16,8 +16,8 @@ ccache -z
 make rom -j$(nproc --all) &
 sleep 90m
 kill %1
-tg "Stop Compiling Rom To Collect Cache
-Status: $progress"
+check_build_no && tg "Stop Compiling Rom To Collect Cache
+Status: $progress | Build No: $build_no"
 
 if [ -e out/target/product/$device_codename/*$device_codename*2022*zip ]; then
 
