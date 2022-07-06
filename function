@@ -37,3 +37,9 @@ apt update && apt install wget pigz gh
 tg () {
 curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$1&chat_id=${chat_id}"
 }
+
+# sync time
+sync_time () {
+sync_time="`cat /tmp/sync_time.txt`"
+rm -rf sync_time.txt
+}
