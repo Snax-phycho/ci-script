@@ -16,11 +16,15 @@ ccache -z
 make rom -j$(nproc --all) &
 sleep 90m
 kill %1
+tg "Stop Compiling Rom To Collect Cache
+Status: $progress"
 
 if [ -e out/target/product/$device_codename/*$device_codename*2022*zip ]; then
 
 cd out/target/product/$device_codename
-upload "*$device_codename*2022*zip"
+send_zip=$(upload "*$device_codename*2022*zip")
+tg "Build Succeed!
+$send_zip"
 
 fi
 
