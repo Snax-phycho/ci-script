@@ -16,6 +16,7 @@ ccache -z
 sync_time
 
 check_build_no
+new_build_no=3 # compile full rom plox
 case "$new_build_no" in
 		 1) # 20 mins 
 		 sleeps=$((105 - $sync_time))m
@@ -35,11 +36,11 @@ case "$new_build_no" in
 		 build_type="SystemImg"
 		 ;;
 		 *) # Lets Make Full Rom
-		 bash -c "$compile_plox" &
-		 sleep $sleeps
+		 bash -c "$compile_plox" #&
+		 #sleep $sleeps
 		 build_type=ROM
 esac
-kill %1
+#kill %1
 tg "Stop Compiling $build_type To Collect Cache
 Status: $progress | Build No: $build_no"
 
