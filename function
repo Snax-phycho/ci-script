@@ -46,7 +46,7 @@ case "$last_value" in
 		 *) # at first build we haven't stored any digit in commit name
 		 build_no=0 # so lets use 0 as it is going to become 1 while committing
 esac
-new_build_no=$(($build_no + 1))
+new_build_no=5
 cd $last_dir
 rm -rf /tmp/last_* # clean up xD
 }
