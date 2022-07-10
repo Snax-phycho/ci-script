@@ -49,9 +49,11 @@ fi
 if [ -e out/target/product/$device_codename/*$device_codename*2022*zip ]; then
 
 cd out/target/product/$device_codename
-send_zip=$(upload "*$device_codename*2022*zip")
+upload "*$device_codename*2022*zip"
 tg "Build Succeed!
-$send_zip"
+Time Took: $(($SECONDS / 60))min and $(($SECONDS % 60))sec.
+gdrive link: $gdrive_url
+github link: $github_url"
 
 else
 
