@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # Normal build steps
-lunch rom_lavender-userdebug
-make bacon -j$(nproc --all)
+lunch nad_lavender-userdebug
+make nad -j$(nproc --all)
