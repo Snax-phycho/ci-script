@@ -8,13 +8,13 @@ env: # Environment variables to pass to all tasks
     chat_id: "ENCRYPTED[!c519abe30864df229179faa4e1eeaa0fde992d896ed620d45cb1f2ca25f0ee3b9373d08fb64a737c8759ae592ef9351c!]"
 
 # store information about git here
-    device_codename: xyz
-    gmail: xyz@gmail.com
-    rom_name: xyz
+    device_codename: lavender
+    gmail: SpiDy2713@gmail.com
+    rom_name: nusa
 
 # store build information
-    lunch: "rom_lavender-userdebug"
-    compile_plox: "make rom -j$(nproc --all)"
+    lunch: "nad_lavender-userdebug"
+    compile_plox: "make nad -j$(nproc --all)"
 
 task:
     name: aosp
