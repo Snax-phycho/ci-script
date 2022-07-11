@@ -24,6 +24,13 @@ git commit -sm "SH*T, HERE WE GO AGAIN | $build_type
 * Empty Commit To Re-Start The Build" --allow-empty
 git push -f
 
+else
+
+# drop empty commits
+git clone -b $CIRRUS_BRANCH $github_repo $rom_name && cd $rom_name
+git filter-branch --commit-filter 'git_commit_non_empty_tree "$@"' -f HEAD
+git push -f
+
 fi
 
 # clean storage
