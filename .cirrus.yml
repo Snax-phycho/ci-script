@@ -16,6 +16,9 @@ env: # Environment variables to pass to all tasks
     lunch: "nad_lavender-userdebug"
     compile_plox: "make nad -j$(nproc --all)"
 
+# choose upload location (1:github_release 2:gdindex 3:github+gdindex both) default is gdrive
+    upload_type: 3
+
 task:
     name: aosp
     timeout_in: 260m
