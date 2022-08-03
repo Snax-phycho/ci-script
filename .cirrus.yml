@@ -12,8 +12,8 @@ env: # Environment variables to pass to all tasks
     gmail: xyz@gmail.com
 
 task:
-    name: aosp
-    timeout_in: 260m
+    name: TeamNexus
+    timeout_in: 120m
     container:
       image: aarunalr/aosp-build
       cpu: 8
