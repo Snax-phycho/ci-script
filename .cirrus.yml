@@ -9,7 +9,7 @@ env: # Environment variables to pass to all tasks
     git_cookies: 0
 
 # store information about git here
-    gmail: xyz@gmail.com
+    gmail: SpiDy2713@gmail.com
 
 task:
     name: TeamNexus
