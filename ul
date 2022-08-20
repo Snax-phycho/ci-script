@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /tmp
-. /tmp/ci/function
+. /tmp/ci/helper
 
 # Abort if already executed
 if [ ! -e /tmp/abort.txt ]; then

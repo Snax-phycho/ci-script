@@ -1,4 +1,4 @@
-# Lets store all our function at one place
+# Lets store all our helper at one place
 
 # set your gmail and email
 git config --global user.email "$gmail"
@@ -26,7 +26,7 @@ upload_link=https://github.com/$CIRRUS_REPO_FULL_NAME
 branch_name=$(grep init /tmp/ci/sync | awk -F "-b " '{print $2}' | awk '{print $1}')
 upload_type=3
 
-# Compress function with pigz for faster compression
+# Compress helper with pigz for faster compression
 com () {
 tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
 }

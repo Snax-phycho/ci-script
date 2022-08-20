@@ -3,7 +3,7 @@
 df -h
 free -h
 
-. /tmp/ci/function
+. /tmp/ci/helper
 
 install_apt
 
@@ -23,15 +23,15 @@ esac
 
 cd /tmp # Where to download cccahe
 
-echo "• Downloading CCACHE •"
-down https://emy.ehteshammalik4.workers.dev/cirrus-user/$CIRRUS_REPO_OWNER/$device_codename/$rom_name/$branch_name/ccache.tar.gz || down https://emy.ehteshammalik4.workers.dev/cirrus-user/$CIRRUS_REPO_OWNER/$device_codename/$rom_name/$branch_name/ccache.tar.gz
+echo "• Downloading Cmf •"
+down https://emy.ehteshammalik4.workers.dev/cirrus-user/$CIRRUS_REPO_OWNER/$device_codename/$rom_name/$branch_name/mf.tar.gz || down https://emy.ehteshammalik4.workers.dev/cirrus-user/$CIRRUS_REPO_OWNER/$device_codename/$rom_name/$branch_name/mf.tar.gz
 if [ -e *.tar.gz ]; then
-tg "$rom_name ccache downloaded successfully!
-Total Size: $(ls -sh ${PWD}/ccache.tar.gz | cut -d - -f 1 | cut -d / -f 1)
+tg "$rom_name cmf downloaded successfully!
+Total Size: $(ls -sh ${PWD}/mf.tar.gz | cut -d - -f 1 | cut -d / -f 1)
 Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
 Status: $progress"
 else
-tg "Skipping CCACHE Download on 1st build..!"
+tg "Skipping Cmf Download on 1st build..!"
 fi
 
 case "$build_type" in
@@ -39,8 +39,8 @@ case "$build_type" in
 rm -rf *.tar.gz
 esac
 
-# Extract ccache so ci can use it
-echo "• Extracting CCACHE •"
+# Extract cmf so ci can use it
+echo "• Extracting Cmf •"
 if [ -e *.tar.gz ]; then
 time tar xf *.tar.gz
 fi
@@ -64,7 +64,7 @@ esac
 while true; do
 if [ -e /tmp/rom/out/target/product/$device_codename/system.img ]; then
 echo "R" > /tmp/build_type.txt
-tg "System Compilation completed! Starting Cache upload
+tg "System Compilation completed! Starting mf upload
 Status: $progress"
 bash /tmp/ci/upload_cc
 else

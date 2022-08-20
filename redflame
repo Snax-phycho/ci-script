@@ -1,9 +1,9 @@
 #!/bin/bash
 cd /tmp/rom # Depends on where source got synced
-. /tmp/ci/function && check_build_type
+. /tmp/ci/helper && check_build_type
 
 # Normal build steps
-. /tmp/ci/build.sh
+. /tmp/ci/blackflame.sh
 case "$build_type" in
 		 R|r)
 export _JAVA_OPTIONS="-Xmx10g"
@@ -57,13 +57,13 @@ case "$build_type" in
 		 R|r) # Lets Make Full Rom
 		 compile_plox | tee build.log
 		 if [ ! -e out/target/product/*/*.zip ]; then # to bypass OOM kill
-		 sed -i 's/-j$(nproc --all)/-j7/' /tmp/ci/build.sh
-		 . /tmp/ci/build.sh # run again to update values before starting compilation
+		 sed -i 's/-j$(nproc --all)/-j7/' /tmp/ci/blackflame.sh
+		 . /tmp/ci/blackflame.sh # run again to update values before starting compilation
 		 compile_plox # simply re-run the build with less threads
 		 fi
 		 if [ ! -e out/target/product/*/*.zip ]; then
-		 sed -i 's/-j7/-j6/' /tmp/ci/build.sh
-		 . /tmp/ci/build.sh
+		 sed -i 's/-j7/-j6/' /tmp/ci/blackflame.sh
+		 . /tmp/ci/blackflame.sh
 		 compile_plox # just incase if -1 thread didnt help
 		 fi
 		 if [ -e "/tmp/rom/build.log" ] && [ $(tail -n 90 /tmp/rom/build.log | grep -o -e 'build stopped' -e 'FAILED: ' | head -n 1) ]; then
