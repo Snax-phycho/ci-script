@@ -2,7 +2,6 @@
 
 mkdir -p /tmp/rom # Where to sync source
 cd /tmp/rom
-. /tmp/ci/function
 
 SECONDS=0
 
@@ -31,6 +30,7 @@ git clone --depth=1 https://$CIRRUS_REPO_OWNER:$github_token@github.com/$CIRRUS_
 git clone --depth=1 https://github.com/$CIRRUS_REPO_OWNER/vendor_xiaomi_lavender -b hmp vendor/xiaomi/lavender
 git clone --depth=1 https://github.com/ImSpiDy/platform_vendor_lawnchair vendor/lawnchair
 
+. /tmp/ci/function
 tg "$rom_name source sync completed!
 Total Size: $(du -sh /tmp/rom | cut -d - -f 1 | cut -d / -f 1)
 Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
